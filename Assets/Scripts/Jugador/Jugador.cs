@@ -11,6 +11,9 @@ public class Jugador : MonoBehaviour
 
     private Estadísticas est;
 
+    public GameObject EspadaInicial;
+    public GameObject ArcoInicial;
+
     public float gravedad = -9.81f;
     public Vector3 direccion;
 
@@ -26,6 +29,21 @@ public class Jugador : MonoBehaviour
     private void Start()
     {
         est = GameObject.Find("Game Manager").GetComponent<Estadísticas>();
+
+        switch (PlayerPrefs.GetString("Arma"))
+        {
+            case "Espada":
+                GameObject Espada = Instantiate(EspadaInicial, Manos.transform.GetChild(1).position, EspadaInicial.transform.rotation);
+                Espada.transform.parent = Manos.transform.GetChild(1);
+                break;
+            case "Arco":
+                GameObject Arco = Instantiate(ArcoInicial, Manos.transform.GetChild(1).position, ArcoInicial.transform.rotation);
+                Arco.transform.parent = Manos.transform.GetChild(1);
+                break;
+            default:
+                break;
+        }
+
     }
 
     void Update()
@@ -86,8 +104,6 @@ public class Jugador : MonoBehaviour
         {
             est.vidaJ = 0;
         }
-
-        
 
         // Raycast (Disparo)
 

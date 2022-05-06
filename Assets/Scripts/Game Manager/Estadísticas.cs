@@ -19,7 +19,7 @@ public class Estadísticas : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
 
         // Multiplicar el tiempo por 60 para que de en minutos
 

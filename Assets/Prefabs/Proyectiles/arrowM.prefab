@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 7415475411718061583}
   - component: {fileID: 4923116042887190844}
   m_Layer: 0
-  m_Name: Flecha
+  m_Name: arrowM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -26,6 +26,8 @@ public class Jugador : MonoBehaviour
 
     // public GameObject menuPausa;
 
+    // Tu codigo es una porqueria  salu2
+
     private void Start()
     {
         est = GameObject.Find("Game Manager").GetComponent<Estadísticas>();

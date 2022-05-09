@@ -4,24 +4,40 @@ using UnityEngine;
 
 public class Arco : MonoBehaviour
 {
+    float startTime = 0f;
+    float holdTime = 1f;
+    bool cooldown = false;
+    public Animation animationn;
     public GameObject bullet;
     public Transform bulletSpawnPoint;
-    public GameObject Player;
     public float speed;
+   
     void Start()
     {
+  
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (cooldown == true)
         {
-            Shoot();
+            StartCoroutine(cooldownWait());
         }
+        
+        if (Input.GetMouseButtonDown(0) & cooldown == false)
+        {
+            animationn.Play("bowRecharge");
+        }
+
+        if (Input.GetMouseButtonUp(0) & cooldown == false)
+        {
+            arrowShoot();
+        }
+
+
+
+
     }
 
     void Shoot()
@@ -33,4 +49,20 @@ public class Arco : MonoBehaviour
         instBulletRigidBody.AddForce(bulletSpawnPoint.forward * speed);
 
     }
+
+    void arrowShoot()
+    {
+        Shoot();
+        cooldown = true;
+    }
+
+    IEnumerator cooldownWait()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        cooldown = false;
+    }
+
+
 }
+
+

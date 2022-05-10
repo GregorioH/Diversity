@@ -26,7 +26,6 @@ public class Jugador : MonoBehaviour
 
     // public GameObject menuPausa;
 
-
     private void Start()
     {
         est = GameObject.Find("Game Manager").GetComponent<Estadísticas>();
@@ -38,7 +37,7 @@ public class Jugador : MonoBehaviour
                 Espada.transform.parent = Manos.transform.GetChild(1);
                 break;
             case "Arco":
-                GameObject Arco = Instantiate(ArcoInicial, Manos.transform.GetChild(1).position, ArcoInicial.transform.rotation);
+                GameObject Arco = Instantiate(ArcoInicial, Manos.transform.GetChild(1).position, gameObject.transform.rotation);
                 Arco.transform.parent = Manos.transform.GetChild(1);
                 break;
             default:
@@ -222,7 +221,5 @@ public class Jugador : MonoBehaviour
     }
 
     */
-
-        // Comentario de prueba
     }
 }

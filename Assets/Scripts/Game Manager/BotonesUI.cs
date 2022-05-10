@@ -8,6 +8,11 @@ public class BotonesUI : MonoBehaviour
     public GameObject menu;
     public GameObject armas;
 
+    private void Awake()
+    {
+        PlayerPrefs.SetString("Arma", "Ninguna");
+    }
+
     public void Historia()
     {
         // Contar la historia
@@ -38,7 +43,7 @@ public class BotonesUI : MonoBehaviour
     public void Dagas()
     {
         PlayerPrefs.SetString("Arma", "Dagas");
-        SceneManager.LoadScene("Juego");
+        // SceneManager.LoadScene("Juego");
     }
 
     public void Arco()
@@ -47,10 +52,10 @@ public class BotonesUI : MonoBehaviour
         SceneManager.LoadScene("Juego");
     }
 
-    public void Baston()
+    public void Magia()
     {
         PlayerPrefs.SetString("Arma", "Baston");
-        SceneManager.LoadScene("Juego");
+        // SceneManager.LoadScene("Juego");
     }
 
     public void Cancelar()

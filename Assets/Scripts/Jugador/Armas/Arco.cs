@@ -39,7 +39,7 @@ public class Arco : MonoBehaviour
 
         if (Input.GetMouseButton(0) & cooldown == false & hold == false)
         {
-            animationn.Play("bowRecharge");
+            animationn.Play("bowNewAnimIdle");
             hold = true;
         }
 
@@ -68,7 +68,7 @@ public class Arco : MonoBehaviour
     {
         cooldown = true;
         Shoot();
-        animationn.Play("bowIdle");
+        animationn.Play("bowResetNew");
         hold = false;
     }
 

@@ -43,7 +43,6 @@ public class Jugador : MonoBehaviour
             default:
                 break;
         }
-
     }
 
     void Update()

@@ -8,12 +8,16 @@ public class CharacterStats : MonoBehaviour
 	public Stat maxHealth;          // Maximum amount of health
 	public int currentHealth { get; protected set; }    // Current amount of health
 
+	public Stat speed;
+	public int currentSpeed { get; protected set; }
+
 	public Stat damage;
 	public Stat armor;
 
 	public virtual void Awake()
 	{
 		currentHealth = maxHealth.GetValue();
+		currentSpeed = speed.GetValue();
 	}
 
 	// Start with max HP.
@@ -47,7 +51,7 @@ public class CharacterStats : MonoBehaviour
 		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth.GetValue());
 	}
 
-	public void Die()
+	public virtual void Die()
     {
 
     }

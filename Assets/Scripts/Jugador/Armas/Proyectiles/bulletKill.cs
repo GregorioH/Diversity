@@ -20,12 +20,15 @@ public class bulletKill : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-        this.gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+        gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+        gameObject.transform.GetChild(0).GetChild(2).GetComponent<BoxCollider>().enabled = false;
 
         if (collision.gameObject.tag == "Enemigo")
         {
-            this.gameObject.transform.parent = collision.gameObject.transform;
+            gameObject.transform.parent = collision.gameObject.transform;
+            collision.gameObject.GetComponent<Enemigo>().TakeDamage(1);
             //Destroy(collision.gameObject);
             //Destroy(this.gameObject);
         }
@@ -33,7 +36,7 @@ public class bulletKill : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
         //this.gameObject.transform.localRotation = other.gameObject.transform.localRotation;
         //this.gameObject.transform.localPosition += other.gameObject.transform.localPosition;
     }

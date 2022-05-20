@@ -20,7 +20,7 @@ public class Espada : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemigo")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Enemigo>().TakeDamage(1);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class UI : MonoBehaviour
 
     private float tiempo;
 
+    [System.NonSerialized] public float enemigosVivos;
+
     [Header("Textos del HUD")]
     public Text textoVidaJ;
     public Text textoTiempo;
@@ -16,13 +19,21 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (object enemigo in FindObjectsOfType<Enemigo>())
+        {
+            enemigosVivos += 1;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         textoVidaJ.text = "HP: " + statsJ.currentHealth.ToString();
+
+        if (enemigosVivos <= 0)
+        {
+            SceneManager.LoadScene("Menu");
+        }
 
         // Actualizar el tiempo restante en el HUD
 

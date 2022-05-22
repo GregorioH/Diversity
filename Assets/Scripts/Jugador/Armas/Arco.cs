@@ -12,27 +12,18 @@ public class Arco : MonoBehaviour
     public GameObject bullet;
     public Transform bulletSpawnPoint;
     public float speed;
-   
+    int strV = 1;
+    int mulStrV = 350;
+
     void Start()
     {
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if (speed <= 100)
-        {
-            speed = 100;
-        }
-        speed = holdSTR;
 
-        if (cooldown == true)
-        {
-            StartCoroutine(cooldownWait());
-
-        }
-
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) & cooldown == false & hold == true)
         {
             strenghtBow();
         }
@@ -48,9 +39,31 @@ public class Arco : MonoBehaviour
             arrowShoot();
         }
 
+        if (speed <= 100)
+        {
+            speed = 100;
+        }
+        speed = holdSTR;
 
+        if (cooldown == true)
+        {
+            StartCoroutine(cooldownWait());
 
+        }
 
+    }
+
+    void FixedUpdate()
+    {
+
+    }
+
+    void arrowShoot()
+    {
+        cooldown = true;
+        Shoot();
+        animationn.Play("bowResetNew");
+        hold = false;
     }
 
     void Shoot()
@@ -61,15 +74,8 @@ public class Arco : MonoBehaviour
         Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
         instBulletRigidBody.AddForce(bulletSpawnPoint.forward * speed);
         holdSTR = 0;
+        speed = 0;
 
-    }
-
-    void arrowShoot()
-    {
-        cooldown = true;
-        Shoot();
-        animationn.Play("bowResetNew");
-        hold = false;
     }
 
     void strenghtBow()
@@ -83,7 +89,8 @@ public class Arco : MonoBehaviour
         {
             holdSTR = 100;
         }
-        holdSTR++;
+        holdSTR += strV * mulStrV * Time.deltaTime;
+        
     }
 
     IEnumerator cooldownWait()

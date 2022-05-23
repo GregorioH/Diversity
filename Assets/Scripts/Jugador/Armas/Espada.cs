@@ -16,11 +16,11 @@ public class Espada : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Enemigo")
+        if (other.gameObject.tag == "Enemigo")
         {
-            collision.gameObject.GetComponent<Enemigo>().TakeDamage(1);
+            other.gameObject.GetComponent<Enemigo>().TakeDamage(1);
         }
     }
 }

@@ -12,6 +12,7 @@ public class CharacterStats : MonoBehaviour
 	public int currentSpeed { get; protected set; }
 
 	public Stat damage;
+	public Stat range;
 	public Stat armor;
 
 	public virtual void Awake()

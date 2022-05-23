@@ -322,11 +322,10 @@ GameObject:
   m_Component:
   - component: {fileID: 221104490}
   - component: {fileID: 221104491}
-  - component: {fileID: 221104492}
   - component: {fileID: 221104493}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: Game Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -352,7 +351,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221104489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0f31995a3dd1db45b2bcdfac539d0a1, type: 3}
   m_Name: 
@@ -362,26 +361,6 @@ MonoBehaviour:
   "da\xF1oJ": 0
   rangoRaycastJ: 10
   cooldownAtaqueJ: 0
---- !u!114 &221104492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 221104489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9182efeef90c4459f10835bae63578, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth:
-    baseValue: 100
-  speed:
-    baseValue: 0
-  damage:
-    baseValue: 5
-  armor:
-    baseValue: 1
 --- !u!114 &221104493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8033ccff5f071040b1b4a942e87ea34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsJ: {fileID: 221104492}
+  statsJ: {fileID: 2434141313223905020, guid: 9f807e6fdbf17e3419d8c2cc7168c40a, type: 3}
   textoVidaJ: {fileID: 1759380180}
   textoTiempo: {fileID: 1777726482}
 --- !u!1 &304584690

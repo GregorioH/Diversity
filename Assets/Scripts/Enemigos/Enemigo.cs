@@ -9,8 +9,6 @@ public class Enemigo : CharacterStats
 
     public Transform jugador;
 
-    public Stat range;
-
     private UI ui;
 
     override public void Awake()

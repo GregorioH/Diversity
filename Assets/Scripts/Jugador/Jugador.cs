@@ -9,7 +9,7 @@ public class Jugador : MonoBehaviour
     public Camera Camara;
     // public Animator animator;
 
-    private Estadísticas est;
+    private PlayerStats est;
 
     public GameObject EspadaInicial;
     public GameObject ArcoInicial;
@@ -28,7 +28,7 @@ public class Jugador : MonoBehaviour
 
     private void Start()
     {
-        est = GameObject.Find("Game Manager").GetComponent<Estadísticas>();
+        est = gameObject.GetComponent<PlayerStats>();
 
         switch (PlayerPrefs.GetString("Arma"))
         {
@@ -62,7 +62,7 @@ public class Jugador : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 mover = (transform.right * x + transform.forward * z);
-        CharCont.Move(Vector3.ClampMagnitude(mover, 1) * est.velocidadJ * Time.deltaTime);
+        CharCont.Move(Vector3.ClampMagnitude(mover, 1) * est.speed.GetValue() * Time.deltaTime);
 
         direccion.y += gravedad * Time.deltaTime;
         CharCont.Move(direccion * Time.deltaTime);
@@ -99,20 +99,20 @@ public class Jugador : MonoBehaviour
 
         // Limitar estadísticas
 
-        if (est.vidaJ <= 0)
+        if (est.currentHealth <= 0)
         {
-            est.vidaJ = 0;
+            est.gameObject.GetComponent<UI>().textoVidaJ.text = "HP: 0";
         }
 
         // Raycast (Disparo)
 
-        RaycastHit hit;
-
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * est.rangoRaycastJ, Color.green);
+            RaycastHit hit;
 
-            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.rangoRaycastJ, capaUI))
+            Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * est.range.GetValue(), Color.green);
+
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.range.GetValue(), capaUI))
             {
                 hit.transform.gameObject.GetComponent<Button>().onClick.Invoke();
                 Debug.Log("Funciona");

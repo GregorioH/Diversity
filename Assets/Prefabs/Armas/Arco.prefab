@@ -486,7 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdSTR: 0
   animationn: {fileID: 1176316844816000899}
-  bullet: {fileID: 5611947586954803539, guid: f93cbc7cf4d77994f8a7c6f1589b7cd1, type: 3}
+  bullet: {fileID: 5611947586954803539, guid: f7d5355f0d6f2bf4ebe87f6abd5bc12a, type: 3}
   bulletSpawnPoint: {fileID: 1011485461877696751}
   speed: 0
 --- !u!111 &1176316844816000899

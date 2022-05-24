@@ -16,6 +16,9 @@ public class Enemigo : CharacterStats
         currentHealth = maxHealth.GetValue();
         agente.speed = speed.GetValue();
         agente.stoppingDistance = range.GetValue();
+        jugador = GameObject.FindGameObjectWithTag("Player").transform;
+        ui = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<UI>();
+        ui.enemigosSpawneados += 1;
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class Enemigo : CharacterStats
 
         ui = FindObjectOfType<UI>();
 
-        ui.enemigosVivos -= 1;
+        ui.enemigosMuertos += 1;
+
     }
 }

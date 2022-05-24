@@ -132,12 +132,12 @@ MonoBehaviour:
     baseValue: 2
   damage:
     baseValue: 0
+  range:
+    baseValue: 4
   armor:
     baseValue: 0
   agente: {fileID: 609899658003105740}
   jugador: {fileID: 0}
-  range:
-    baseValue: 4
 --- !u!195 &609899658003105740
 NavMeshAgent:
   m_ObjectHideFlags: 0

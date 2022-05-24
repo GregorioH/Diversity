@@ -10,7 +10,10 @@ public class UI : MonoBehaviour
 
     private float tiempo;
 
-    [System.NonSerialized] public float enemigosVivos;
+    [System.NonSerialized] public float enemigosSpawneados;
+    [System.NonSerialized] public float enemigosMuertos;
+     public float enemigosSpawneables;
+
 
     [Header("Textos del HUD")]
     public Text textoVidaJ;
@@ -19,10 +22,11 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (object enemigo in FindObjectsOfType<Enemigo>())
+        /*foreach (object enemigo in FindObjectsOfType<Enemigo>())
         {
             enemigosVivos += 1;
         }
+        */
     }
 
     // Update is called once per frame
@@ -30,7 +34,7 @@ public class UI : MonoBehaviour
     {
         textoVidaJ.text = "HP: " + statsJ.currentHealth.ToString();
 
-        if (enemigosVivos <= 0)
+        if (enemigosMuertos >= enemigosSpawneables)
         {
             SceneManager.LoadScene("Menu");
         }
@@ -39,6 +43,7 @@ public class UI : MonoBehaviour
 
         tiempo += Time.deltaTime;
         Temporizador(tiempo);
+
     }
 
     void Temporizador(float tiempoHUD)

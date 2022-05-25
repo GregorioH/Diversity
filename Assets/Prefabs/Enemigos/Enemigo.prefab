@@ -131,11 +131,13 @@ MonoBehaviour:
   speed:
     baseValue: 2
   damage:
-    baseValue: 0
+    baseValue: 5
   range:
     baseValue: 4
   armor:
     baseValue: 0
+  attackSpeed:
+    baseValue: 1
   agente: {fileID: 609899658003105740}
   jugador: {fileID: 0}
 --- !u!195 &609899658003105740

@@ -19,7 +19,7 @@ public class PlayerStats : CharacterStats
 		
 		//EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 	}
-	/*
+    /*
 	void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
 	{
 		if (newItem != null)
@@ -37,5 +37,11 @@ public class PlayerStats : CharacterStats
 	}
 	*/
 
+    public override void Die()
+    {
+        // base.Die();
+
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }

@@ -30,6 +30,9 @@ public class Jugador : MonoBehaviour
     {
         est = gameObject.GetComponent<PlayerStats>();
 
+        AssignWweapon(PlayerPrefs.GetString("Arma"));
+
+        /*
         switch (PlayerPrefs.GetString("Arma"))
         {
             case "Espada":
@@ -42,7 +45,7 @@ public class Jugador : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     void Update()
@@ -71,14 +74,7 @@ public class Jugador : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (Manos.activeSelf == true)
-            {
-                Manos.SetActive(false);
-            }
-            else
-            {
-                Manos.SetActive(true);
-            }
+            Manos.SetActive(!Manos.activeInHierarchy);
         }
 
         /*
@@ -220,5 +216,17 @@ public class Jugador : MonoBehaviour
     }
 
     */
+    }
+
+    // Asignar arma al empezar el juego
+
+    void AssignWweapon(string weaponType)
+    {
+        if (weaponType != "Ninguna")
+        {
+            GameObject selectedWeapon = Resources.Load<GameObject>("Weapons/" + weaponType);
+            GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(1).position, selectedWeapon.transform.rotation);
+            weapon.transform.parent = Manos.transform.GetChild(1);
+        }
     }
 }

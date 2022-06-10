@@ -32,23 +32,23 @@ public class Enemigo : CharacterStats
 
         cooldownTime += Time.deltaTime;
 
-        float distrancia = Vector3.Distance(jugador.position, this.gameObject.transform.position);
+        float distancia = Vector3.Distance(jugador.position, this.gameObject.transform.position);
 
-        if (distrancia <= agente.stoppingDistance)
-        {
-            agente.speed = 0;
-
-            if (cooldownTime >= attackSpeed.GetValue())
-            {
-                cooldownTime = 0;
-
-                jugador.gameObject.GetComponent<PlayerStats>().TakeDamage(damage.GetValue());
-            }
-        }
-        else
+        if (distancia > agente.stoppingDistance)
         {
             agente.speed = speed.GetValue();
+            return;
         }
+
+        agente.speed = 0;
+
+        if (cooldownTime >= attackSpeed.GetValue())
+        {
+            cooldownTime = 0;
+
+            jugador.gameObject.GetComponent<PlayerStats>().TakeDamage(damage.GetValue());
+        }
+
     }
 
     override public void Die()

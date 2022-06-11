@@ -9,8 +9,8 @@ using UnityEngine.AI;
 
 public class Interactable : MonoBehaviour
 {
-
-	public float radius = 3f;
+	/*
+	public float radius = 1f;
 	public Transform interactionTransform;
 
 	bool isFocus = false;   // Is this interactable currently being focused?
@@ -52,7 +52,8 @@ public class Interactable : MonoBehaviour
 	// This method is meant to be overwritten
 	public virtual void Interact()
 	{
-
+		gameObject.transform.parent = player;
+		Debug.Log("Interactuando");
 	}
 
 	void OnDrawGizmosSelected()
@@ -60,5 +61,5 @@ public class Interactable : MonoBehaviour
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(interactionTransform.position, radius);
 	}
-
+	*/
 }

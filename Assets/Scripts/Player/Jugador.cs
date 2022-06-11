@@ -11,8 +11,8 @@ public class Jugador : MonoBehaviour
 
     private PlayerStats est;
 
-    public GameObject EspadaInicial;
-    public GameObject ArcoInicial;
+    //public GameObject EspadaInicial;
+    //public GameObject ArcoInicial;
 
     public float gravedad = -9.81f;
     public Vector3 direccion;
@@ -108,10 +108,20 @@ public class Jugador : MonoBehaviour
 
             Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * est.range.GetValue(), Color.green);
 
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.range.GetValue()))
+            {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                if (interactable != null)
+                {
+                    Interact(interactable);
+                }
+            }
+
             if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.range.GetValue(), capaUI))
             {
                 hit.transform.gameObject.GetComponent<Button>().onClick.Invoke();
-                Debug.Log("Funciona");
+                // Debug.Log("Funciona");
             }
         }
 
@@ -228,5 +238,10 @@ public class Jugador : MonoBehaviour
             GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(1).position, selectedWeapon.transform.rotation);
             weapon.transform.parent = Manos.transform.GetChild(1);
         }
+    }
+
+    void Interact(Interactable obj)
+    {
+        Debug.Log("Interaccion");
     }
 }

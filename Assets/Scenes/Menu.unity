@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3928f294263ed545a4e9410c70261fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  radius: 2
   interactionTransform: {fileID: 1465345677}
 --- !u!65 &1465345674
 BoxCollider:
@@ -2788,6 +2788,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7129182944465277649, guid: 9f807e6fdbf17e3419d8c2cc7168c40a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7129182944708728963, guid: 9f807e6fdbf17e3419d8c2cc7168c40a, type: 3}
       propertyPath: m_RootOrder
       value: 4

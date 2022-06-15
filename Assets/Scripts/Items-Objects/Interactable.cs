@@ -9,7 +9,7 @@ using UnityEngine.AI;
 
 public class Interactable : MonoBehaviour
 {
-	/*
+	
 	public float radius = 1f;
 	public Transform interactionTransform;
 
@@ -17,6 +17,13 @@ public class Interactable : MonoBehaviour
 	Transform player;       // Reference to the player transform
 
 	bool hasInteracted = false; // Have we already interacted with the object?
+
+	// This method is meant to be overwritten
+	public virtual void Interact()
+	{
+		gameObject.transform.parent = player.gameObject.GetComponent<Jugador>().Camara.transform;
+		Debug.Log("Interactuando");
+	}
 
 	void Update()
 	{
@@ -37,8 +44,8 @@ public class Interactable : MonoBehaviour
 	public void OnFocused(Transform playerTransform)
 	{
 		isFocus = true;
-		hasInteracted = false;
 		player = playerTransform;
+		hasInteracted = false;
 	}
 
 	// Called when the object is no longer focused
@@ -49,17 +56,10 @@ public class Interactable : MonoBehaviour
 		player = null;
 	}
 
-	// This method is meant to be overwritten
-	public virtual void Interact()
-	{
-		gameObject.transform.parent = player;
-		Debug.Log("Interactuando");
-	}
-
 	void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(interactionTransform.position, radius);
 	}
-	*/
+	
 }

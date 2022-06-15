@@ -9,7 +9,9 @@ public class Jugador : MonoBehaviour
     public Camera Camara;
     // public Animator animator;
 
-    private PlayerStats est;
+    private PlayerStats Stats;
+
+    private Interactable focus;
 
     //public GameObject EspadaInicial;
     //public GameObject ArcoInicial;
@@ -28,7 +30,7 @@ public class Jugador : MonoBehaviour
 
     private void Start()
     {
-        est = gameObject.GetComponent<PlayerStats>();
+        Stats = gameObject.GetComponent<PlayerStats>();
 
         AssignWweapon(PlayerPrefs.GetString("Arma"));
 
@@ -65,7 +67,7 @@ public class Jugador : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 mover = (transform.right * x + transform.forward * z);
-        CharCont.Move(Vector3.ClampMagnitude(mover, 1) * est.speed.GetValue() * Time.deltaTime);
+        CharCont.Move(Vector3.ClampMagnitude(mover, 1) * Stats.speed.GetValue() * Time.deltaTime);
 
         direccion.y += gravedad * Time.deltaTime;
         CharCont.Move(direccion * Time.deltaTime);
@@ -81,7 +83,7 @@ public class Jugador : MonoBehaviour
 
         // Animaciones
 
-        if ((x != 0 || z != 0) && est.velocidadJ == 3 && animator.GetInteger("SUPERESTADO") != 3)
+        if ((x != 0 || z != 0) && Stats.velocidadJ == 3 && animator.GetInteger("SUPERESTADO") != 3)
         {
             animator.SetInteger("SUPERESTADO", 1);
         }
@@ -95,9 +97,9 @@ public class Jugador : MonoBehaviour
 
         // Limitar estadísticas
 
-        if (est.currentHealth <= 0)
+        if (Stats.currentHealth <= 0)
         {
-            est.gameObject.GetComponent<UI>().textoVidaJ.text = "HP: 0";
+            Stats.gameObject.GetComponent<UI>().textoVidaJ.text = "HP: 0";
         }
 
         // Raycast (Disparo)
@@ -106,19 +108,19 @@ public class Jugador : MonoBehaviour
         {
             RaycastHit hit;
 
-            Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * est.range.GetValue(), Color.green);
+            Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * Stats.range.GetValue(), Color.green);
 
-            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.range.GetValue()))
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.range.GetValue()) && !Manos.activeInHierarchy)
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
 
                 if (interactable != null)
-                {
-                    Interact(interactable);
+                { 
+                    SetFocus(interactable);
                 }
             }
 
-            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.range.GetValue(), capaUI))
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.range.GetValue(), capaUI))
             {
                 hit.transform.gameObject.GetComponent<Button>().onClick.Invoke();
                 // Debug.Log("Funciona");
@@ -129,18 +131,18 @@ public class Jugador : MonoBehaviour
 
         segundosCooldownDisparo += Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0) && segundosCooldownDisparo >= est.cooldownAtaqueJ && est.municionJ > 0 && puedeRecargar == true)
+        if (Input.GetMouseButtonDown(0) && segundosCooldownDisparo >= Stats.cooldownAtaqueJ && Stats.municionJ > 0 && puedeRecargar == true)
         {
             segundosCooldownDisparo = 0;
 
-            est.municionJ -= 1;
+            Stats.municionJ -= 1;
 
             animator.SetInteger("SUPERESTADO", 3);
 
             CharCont.enabled = false;
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.rangoJ, capaEnemigos))
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.rangoJ, capaEnemigos))
             {
                 Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 Debug.Log("Golpeo enemigo");
@@ -173,7 +175,7 @@ public class Jugador : MonoBehaviour
 
         // Perder
 
-        if (est.vidaJ <= 0)
+        if (Stats.vidaJ <= 0)
         {
             MenuPausaDerrotaVictoria();
 
@@ -181,7 +183,7 @@ public class Jugador : MonoBehaviour
 
             eliminarDespausar();
         }
-        else if (est.tiempoRestante <= 0)
+        else if (Stats.tiempoRestante <= 0)
         {
             MenuPausaDerrotaVictoria();
 
@@ -192,7 +194,7 @@ public class Jugador : MonoBehaviour
 
         // Ganar
 
-        if (est.sobrevivientesRestantes == 0)
+        if (Stats.sobrevivientesRestantes == 0)
         {
             MenuPausaDerrotaVictoria();
 
@@ -228,6 +230,31 @@ public class Jugador : MonoBehaviour
     */
     }
 
+    // Set our focus to a new focus
+    void SetFocus(Interactable newFocus)
+    {
+        // If our focus has changed
+        if (newFocus != focus)
+        {
+            // Defocus the old one
+            if (focus != null)
+                focus.OnDefocused();
+
+            focus = newFocus;   // Set our new focus
+        }
+
+        newFocus.OnFocused(transform);
+    }
+
+    // Remove our current focus
+    void RemoveFocus()
+    {
+        if (focus != null)
+            focus.OnDefocused();
+
+        focus = null;
+    }
+
     // Asignar arma al empezar el juego
 
     void AssignWweapon(string weaponType)
@@ -238,10 +265,5 @@ public class Jugador : MonoBehaviour
             GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(1).position, selectedWeapon.transform.rotation);
             weapon.transform.parent = Manos.transform.GetChild(1);
         }
-    }
-
-    void Interact(Interactable obj)
-    {
-        Debug.Log("Interaccion");
     }
 }

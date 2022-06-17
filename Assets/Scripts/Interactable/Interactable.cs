@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
 		Debug.Log("Interactuando");
 	}
 
-	void Update()
+	public virtual void Update()
 	{
 		if (isFocus)    // If currently being focused
 		{

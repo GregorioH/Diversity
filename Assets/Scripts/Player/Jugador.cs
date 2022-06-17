@@ -30,9 +30,20 @@ public class Jugador : MonoBehaviour
 
     private void Start()
     {
+        //PlayerPrefs.SetString("Arma", null);
+
+        Debug.Log(PlayerPrefs.GetString("Arma"));
+
         Stats = gameObject.GetComponent<PlayerStats>();
 
-        AssignWweapon(PlayerPrefs.GetString("Arma"));
+        if (PlayerPrefs.GetString("Arma") != "")
+        {
+            AssignWweapon(PlayerPrefs.GetString("Arma"));
+        }
+        else
+        {
+            AssignWweapon("Arco");
+        }
 
         /*
         switch (PlayerPrefs.GetString("Arma"))
@@ -110,6 +121,7 @@ public class Jugador : MonoBehaviour
 
             Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * Stats.range.GetValue(), Color.green);
 
+            /*
             if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.range.GetValue()) && !Manos.activeInHierarchy)
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
@@ -118,7 +130,7 @@ public class Jugador : MonoBehaviour
                 { 
                     SetFocus(interactable);
                 }
-            }
+            }*/
 
             if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.range.GetValue(), capaUI))
             {
@@ -259,7 +271,7 @@ public class Jugador : MonoBehaviour
 
     void AssignWweapon(string weaponType)
     {
-        if (weaponType != "Ninguna")
+        if (PlayerPrefs.GetString("Arma") != null)
         {
             GameObject selectedWeapon = Resources.Load<GameObject>("Weapons/" + weaponType);
             GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(1).position, selectedWeapon.transform.rotation);

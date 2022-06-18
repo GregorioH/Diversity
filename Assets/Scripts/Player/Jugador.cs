@@ -32,18 +32,12 @@ public class Jugador : MonoBehaviour
     {
         //PlayerPrefs.SetString("Arma", null);
 
-        Debug.Log(PlayerPrefs.GetString("Arma"));
-
         Stats = gameObject.GetComponent<PlayerStats>();
 
         if (PlayerPrefs.GetString("Arma") != "")
-        {
             AssignWweapon(PlayerPrefs.GetString("Arma"));
-        }
         else
-        {
             AssignWweapon("Arco");
-        }
 
         /*
         switch (PlayerPrefs.GetString("Arma"))
@@ -68,9 +62,8 @@ public class Jugador : MonoBehaviour
         tocaPiso = Physics.CheckSphere(checkPiso.position, distanciaPiso, capaPiso);
 
         if (tocaPiso && direccion.y < 0)
-        {
             direccion.y = -2f;
-        }
+        
 
         // Movimiento
 
@@ -86,9 +79,8 @@ public class Jugador : MonoBehaviour
         // Guardar o sacar el arma
 
         if (Input.GetKeyDown(KeyCode.R))
-        {
             Manos.SetActive(!Manos.activeInHierarchy);
-        }
+        
 
         /*
 
@@ -240,6 +232,12 @@ public class Jugador : MonoBehaviour
     }
 
     */
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Interactable>() && focus == null)
+            SetFocus(other.GetComponent<Interactable>());
     }
 
     // Set our focus to a new focus

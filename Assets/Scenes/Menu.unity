@@ -123,6 +123,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 83968054366414f44ab8a5d5e4e89bdc, type: 2}
+--- !u!1 &57198502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7129182944708728969, guid: 9f807e6fdbf17e3419d8c2cc7168c40a, type: 3}
+  m_PrefabInstance: {fileID: 2006477732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &57198511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57198502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72804a8d6e6f0114288502710a683dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: 20
+  items: []
 --- !u!1 &76681416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1897,7 @@ GameObject:
   - component: {fileID: 1465345676}
   - component: {fileID: 1465345675}
   - component: {fileID: 1465345674}
-  - component: {fileID: 1465345673}
+  - component: {fileID: 1465345678}
   m_Layer: 0
   m_Name: Test object
   m_TagString: Untagged
@@ -1886,20 +1905,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1465345673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465345672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3928f294263ed545a4e9410c70261fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 2
-  interactionTransform: {fileID: 1465345677}
 --- !u!65 &1465345674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1908,7 +1913,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465345672}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1976,6 +1981,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1465345678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465345672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be95606b090ffd443abe9232e065b880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+  interactionTransform: {fileID: 1465345677}
+  item: {fileID: 11400000, guid: a6472f97abc1ec84785eef1a7b7d6d73, type: 2}
 --- !u!1 &1625837461
 GameObject:
   m_ObjectHideFlags: 0

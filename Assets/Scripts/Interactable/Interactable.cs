@@ -21,13 +21,13 @@ public class Interactable : MonoBehaviour
 	// This method is meant to be overwritten
 	public virtual void Interact()
 	{
-		gameObject.transform.parent = player.gameObject.GetComponent<Jugador>().Camara.transform;
+		// gameObject.transform.parent = player.gameObject.GetComponent<Jugador>().Camara.transform;
 		Debug.Log("Interactuando");
 	}
 
 	public virtual void Update()
 	{
-		if (isFocus)    // If currently being focused
+		if (isFocus && !hasInteracted)    // If currently being focused
 		{
 			float distance = Vector3.Distance(player.position, interactionTransform.position);
 			// If we haven't already interacted and the player is close enough

@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using static OVRInput;
+using Button = UnityEngine.UI.Button;
+using IButton = OVRInput.Button;
+
 public class Jugador : MonoBehaviour
 {
     public CharacterController CharCont;
@@ -72,7 +76,8 @@ public class Jugador : MonoBehaviour
 
         // Guardar o sacar el arma
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) 
+            || GetDown(IButton.One, Controller.RTouch))
         {
             Manos.SetActive(!Manos.activeInHierarchy);
         }
@@ -101,8 +106,9 @@ public class Jugador : MonoBehaviour
         }
 
         // Raycast (Disparo)
-
-        if (Input.GetMouseButtonDown(0))
+        /*
+        if (Input.GetMouseButtonDown(0)
+            || GetDown(IButton.PrimaryIndexTrigger, Controller.RTouch))
         {
             RaycastHit hit;
 
@@ -114,6 +120,7 @@ public class Jugador : MonoBehaviour
                 Debug.Log("Funciona");
             }
         }
+        */
 
         /*
 

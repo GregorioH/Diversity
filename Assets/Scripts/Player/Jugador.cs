@@ -34,10 +34,14 @@ public class Jugador : MonoBehaviour
 
         Stats = gameObject.GetComponent<PlayerStats>();
 
-        if (PlayerPrefs.GetString("Arma") != "")
-            AssignWweapon(PlayerPrefs.GetString("Arma"));
-        else
-            AssignWweapon("Arco");
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            if (PlayerPrefs.GetString("Arma") != "")
+                AssignWweapon(PlayerPrefs.GetString("Arma"));
+            else
+                AssignWweapon("Arco");
+        }
+            // PlayerPrefs.SetString("Arma", null);
 
         /*
         switch (PlayerPrefs.GetString("Arma"))
@@ -79,8 +83,11 @@ public class Jugador : MonoBehaviour
         // Guardar o sacar el arma
 
         if (Input.GetKeyDown(KeyCode.R))
+        {
             Manos.SetActive(!Manos.activeInHierarchy);
-        
+            Cursor.visible = !true;
+            Cursor.lockState = CursorLockMode.None;
+        }
 
         /*
 

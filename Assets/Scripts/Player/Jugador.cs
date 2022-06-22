@@ -128,7 +128,7 @@ public class Jugador : MonoBehaviour
         }
 
         // Raycast (Disparo)
-        /*
+        
         if (Input.GetMouseButtonDown(0)
             || GetDown(IButton.PrimaryIndexTrigger, Controller.RTouch))
         {
@@ -153,109 +153,6 @@ public class Jugador : MonoBehaviour
                 // Debug.Log("Funciona");
             }
         }
-        */
-
-        /*
-
-        segundosCooldownDisparo += Time.deltaTime;
-
-        if (Input.GetMouseButtonDown(0) && segundosCooldownDisparo >= Stats.cooldownAtaqueJ && Stats.municionJ > 0 && puedeRecargar == true)
-        {
-            segundosCooldownDisparo = 0;
-
-            Stats.municionJ -= 1;
-
-            animator.SetInteger("SUPERESTADO", 3);
-
-            CharCont.enabled = false;
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-
-            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.rangoJ, capaEnemigos))
-            {
-                Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                Debug.Log("Golpeo enemigo");
-            }
-            else
-            {
-                Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-                Debug.Log("Golpeo otra cosa");
-            }
-        }
-
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            CharCont.enabled = true;
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
-            animator.SetInteger("SUPERESTADO", 0);
-        }
-
-        // Pausar el juego
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            MenuPausaDerrotaVictoria();
-
-            menuPausa.transform.GetChild(0).GetComponent<Text>().text = "Pausa";
-        }
-
-        
-
-        // Perder
-
-        if (Stats.vidaJ <= 0)
-        {
-            MenuPausaDerrotaVictoria();
-
-            menuPausa.transform.GetChild(0).GetComponent<Text>().text = "Te han matado...";
-
-            eliminarDespausar();
-        }
-        else if (Stats.tiempoRestante <= 0)
-        {
-            MenuPausaDerrotaVictoria();
-
-            menuPausa.transform.GetChild(0).GetComponent<Text>().text = "Se acabó el tiempo";
-
-            eliminarDespausar();
-        }
-
-        // Ganar
-
-        if (Stats.sobrevivientesRestantes == 0)
-        {
-            MenuPausaDerrotaVictoria();
-
-            menuPausa.transform.GetChild(0).GetComponent<Text>().text = "¡Has ganado!";
-
-            eliminarDespausar();
-        }
-    }
-
-    // Menu al pausar o perder
-
-    void MenuPausaDerrotaVictoria()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        menuPausa.SetActive(true);
-
-        Time.timeScale = 0;
-
-        this.enabled = false;
-    }
-
-    // Eliminar el boton de despausar para los menús de derrota y victoria
-
-    void eliminarDespausar()
-    {
-        menuPausa.transform.GetChild(1).gameObject.SetActive(false);
-        menuPausa.transform.GetChild(2).GetComponent<RectTransform>().position = new Vector2(960, 540);
-        menuPausa.transform.GetChild(3).GetComponent<RectTransform>().position = new Vector2(960, 360);
-    }
-
-    */
     }
 
     private void OnTriggerEnter(Collider other)

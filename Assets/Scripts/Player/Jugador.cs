@@ -13,10 +13,12 @@ public class Jugador : MonoBehaviour
     public Camera Camara;
     // public Animator animator;
 
-    private PlayerStats est;
+    private PlayerStats Stats;
 
-    public GameObject EspadaInicial;
-    public GameObject ArcoInicial;
+    private Interactable focus;
+
+    //public GameObject EspadaInicial;
+    //public GameObject ArcoInicial;
 
     public float gravedad = -9.81f;
     public Vector3 direccion;
@@ -32,9 +34,18 @@ public class Jugador : MonoBehaviour
 
     private void Start()
     {
-        est = gameObject.GetComponent<PlayerStats>();
+        //PlayerPrefs.SetString("Arma", null);
 
-        AssignWweapon(PlayerPrefs.GetString("Arma"));
+        Stats = gameObject.GetComponent<PlayerStats>();
+
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            if (PlayerPrefs.GetString("Arma") != "")
+                AssignWweapon(PlayerPrefs.GetString("Arma"));
+            else
+                AssignWweapon("Arco");
+        }
+            // PlayerPrefs.SetString("Arma", null);
 
         /*
         switch (PlayerPrefs.GetString("Arma"))
@@ -59,9 +70,8 @@ public class Jugador : MonoBehaviour
         tocaPiso = Physics.CheckSphere(checkPiso.position, distanciaPiso, capaPiso);
 
         if (tocaPiso && direccion.y < 0)
-        {
             direccion.y = -2f;
-        }
+        
 
         // Movimiento
 
@@ -69,7 +79,7 @@ public class Jugador : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 mover = (transform.right * x + transform.forward * z);
-        CharCont.Move(Vector3.ClampMagnitude(mover, 1) * est.speed.GetValue() * Time.deltaTime);
+        CharCont.Move(Vector3.ClampMagnitude(mover, 1) * Stats.speed.GetValue() * Time.deltaTime);
 
         direccion.y += gravedad * Time.deltaTime;
         CharCont.Move(direccion * Time.deltaTime);
@@ -80,13 +90,25 @@ public class Jugador : MonoBehaviour
             || GetDown(IButton.One, Controller.RTouch))
         {
             Manos.SetActive(!Manos.activeInHierarchy);
+
+            if (Cursor.visible == true)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
         }
 
         /*
 
         // Animaciones
 
-        if ((x != 0 || z != 0) && est.velocidadJ == 3 && animator.GetInteger("SUPERESTADO") != 3)
+        if ((x != 0 || z != 0) && Stats.velocidadJ == 3 && animator.GetInteger("SUPERESTADO") != 3)
         {
             animator.SetInteger("SUPERESTADO", 1);
         }
@@ -100,9 +122,9 @@ public class Jugador : MonoBehaviour
 
         // Limitar estadísticas
 
-        if (est.currentHealth <= 0)
+        if (Stats.currentHealth <= 0)
         {
-            est.gameObject.GetComponent<UI>().textoVidaJ.text = "HP: 0";
+            Stats.gameObject.GetComponent<UI>().textoVidaJ.text = "HP: 0";
         }
 
         // Raycast (Disparo)
@@ -112,12 +134,23 @@ public class Jugador : MonoBehaviour
         {
             RaycastHit hit;
 
-            Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * est.range.GetValue(), Color.green);
+            Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * Stats.range.GetValue(), Color.green);
 
-            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.range.GetValue(), capaUI))
+            /*
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.range.GetValue()) && !Manos.activeInHierarchy)
+            {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                if (interactable != null)
+                { 
+                    SetFocus(interactable);
+                }
+            }*/
+
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.range.GetValue(), capaUI))
             {
                 hit.transform.gameObject.GetComponent<Button>().onClick.Invoke();
-                Debug.Log("Funciona");
+                // Debug.Log("Funciona");
             }
         }
         */
@@ -126,18 +159,18 @@ public class Jugador : MonoBehaviour
 
         segundosCooldownDisparo += Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0) && segundosCooldownDisparo >= est.cooldownAtaqueJ && est.municionJ > 0 && puedeRecargar == true)
+        if (Input.GetMouseButtonDown(0) && segundosCooldownDisparo >= Stats.cooldownAtaqueJ && Stats.municionJ > 0 && puedeRecargar == true)
         {
             segundosCooldownDisparo = 0;
 
-            est.municionJ -= 1;
+            Stats.municionJ -= 1;
 
             animator.SetInteger("SUPERESTADO", 3);
 
             CharCont.enabled = false;
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, est.rangoJ, capaEnemigos))
+            if (Physics.Raycast(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward), out hit, Stats.rangoJ, capaEnemigos))
             {
                 Debug.DrawRay(Camara.gameObject.transform.position, Camara.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 Debug.Log("Golpeo enemigo");
@@ -170,7 +203,7 @@ public class Jugador : MonoBehaviour
 
         // Perder
 
-        if (est.vidaJ <= 0)
+        if (Stats.vidaJ <= 0)
         {
             MenuPausaDerrotaVictoria();
 
@@ -178,7 +211,7 @@ public class Jugador : MonoBehaviour
 
             eliminarDespausar();
         }
-        else if (est.tiempoRestante <= 0)
+        else if (Stats.tiempoRestante <= 0)
         {
             MenuPausaDerrotaVictoria();
 
@@ -189,7 +222,7 @@ public class Jugador : MonoBehaviour
 
         // Ganar
 
-        if (est.sobrevivientesRestantes == 0)
+        if (Stats.sobrevivientesRestantes == 0)
         {
             MenuPausaDerrotaVictoria();
 
@@ -225,11 +258,42 @@ public class Jugador : MonoBehaviour
     */
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Interactable>() && focus == null)
+            SetFocus(other.GetComponent<Interactable>());
+    }
+
+    // Set our focus to a new focus
+    void SetFocus(Interactable newFocus)
+    {
+        // If our focus has changed
+        if (newFocus != focus)
+        {
+            // Defocus the old one
+            if (focus != null)
+                focus.OnDefocused();
+
+            focus = newFocus;   // Set our new focus
+        }
+
+        newFocus.OnFocused(transform);
+    }
+
+    // Remove our current focus
+    void RemoveFocus()
+    {
+        if (focus != null)
+            focus.OnDefocused();
+
+        focus = null;
+    }
+
     // Asignar arma al empezar el juego
 
     void AssignWweapon(string weaponType)
     {
-        if (weaponType != "Ninguna")
+        if (PlayerPrefs.GetString("Arma") != null)
         {
             GameObject selectedWeapon = Resources.Load<GameObject>("Weapons/" + weaponType);
             GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(1).position, selectedWeapon.transform.rotation);

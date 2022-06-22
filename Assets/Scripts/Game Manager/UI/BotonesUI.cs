@@ -8,11 +8,6 @@ public class BotonesUI : MonoBehaviour
     public GameObject menu;
     public GameObject armas;
 
-    private void Awake()
-    {
-        PlayerPrefs.SetString("Arma", "Ninguna");
-    }
-
     public void Historia()
     {
         // Contar la historia

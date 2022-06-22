@@ -9,8 +9,8 @@ using UnityEngine.AI;
 
 public class Interactable : MonoBehaviour
 {
-
-	public float radius = 3f;
+	
+	public float radius = 1f;
 	public Transform interactionTransform;
 
 	bool isFocus = false;   // Is this interactable currently being focused?
@@ -18,9 +18,16 @@ public class Interactable : MonoBehaviour
 
 	bool hasInteracted = false; // Have we already interacted with the object?
 
-	void Update()
+	// This method is meant to be overwritten
+	public virtual void Interact()
 	{
-		if (isFocus)    // If currently being focused
+		// gameObject.transform.parent = player.gameObject.GetComponent<Jugador>().Camara.transform;
+		Debug.Log("Interactuando");
+	}
+
+	public virtual void Update()
+	{
+		if (isFocus && !hasInteracted)    // If currently being focused
 		{
 			float distance = Vector3.Distance(player.position, interactionTransform.position);
 			// If we haven't already interacted and the player is close enough
@@ -37,8 +44,8 @@ public class Interactable : MonoBehaviour
 	public void OnFocused(Transform playerTransform)
 	{
 		isFocus = true;
-		hasInteracted = false;
 		player = playerTransform;
+		hasInteracted = false;
 	}
 
 	// Called when the object is no longer focused
@@ -49,16 +56,10 @@ public class Interactable : MonoBehaviour
 		player = null;
 	}
 
-	// This method is meant to be overwritten
-	public virtual void Interact()
-	{
-
-	}
-
 	void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(interactionTransform.position, radius);
 	}
-
+	
 }

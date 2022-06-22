@@ -85,8 +85,18 @@ public class Jugador : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Manos.SetActive(!Manos.activeInHierarchy);
-            Cursor.visible = !true;
-            Cursor.lockState = CursorLockMode.None;
+
+            if (Cursor.visible == true)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
         }
 
         /*

@@ -808,6 +808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 221104490}
   - component: {fileID: 221104493}
+  - component: {fileID: 221104491}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Game Manager
@@ -829,6 +830,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &221104491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221104489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26b0e0365ab14c41aff4d61a6b16b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultEquipment: []
+  targetMesh: {fileID: 0}
 --- !u!114 &221104493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3776,9 +3791,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be95606b090ffd443abe9232e065b880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
+  radius: 1
   interactionTransform: {fileID: 1465345677}
-  item: {fileID: 11400000, guid: a6472f97abc1ec84785eef1a7b7d6d73, type: 2}
+  item: {fileID: 11400000, guid: a920b65123b0ae24490327d514e20460, type: 2}
 --- !u!224 &1478642543 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2189216544251862850, guid: f278fa5ed5afec349bd350abf33c41f6, type: 3}

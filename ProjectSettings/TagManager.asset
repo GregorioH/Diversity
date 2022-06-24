@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemigo
   - Game Manager
+  - Interact
   layers:
   - Default
   - TransparentFX

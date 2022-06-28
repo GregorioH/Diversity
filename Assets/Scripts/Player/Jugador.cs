@@ -193,8 +193,8 @@ public class Jugador : MonoBehaviour
         if (PlayerPrefs.GetString("Arma") != null)
         {
             GameObject selectedWeapon = Resources.Load<GameObject>("Weapons/" + weaponType);
-            GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(1).position, selectedWeapon.transform.rotation);
-            weapon.transform.parent = Manos.transform.GetChild(1);
+            GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(0).position, selectedWeapon.transform.rotation);
+            weapon.transform.parent = Manos.transform.GetChild(0);
         }
     }
 }

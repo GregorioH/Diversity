@@ -91,12 +91,12 @@ public class Jugador : MonoBehaviour
         {
             Manos.SetActive(!Manos.activeInHierarchy);
 
-            if (Cursor.visible == true)
+            if (Cursor.lockState == CursorLockMode.None)
             {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
-            else
+            else if (Cursor.lockState == CursorLockMode.Locked)
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;

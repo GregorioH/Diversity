@@ -24,7 +24,7 @@ public class Jugador : MonoBehaviour
     public Vector3 direccion;
 
     public Transform checkPiso;
-    public GameObject Manos;
+    public GameObject[] Manos;
     public float distanciaPiso = 0.4f;
     public LayerMask capaPiso;
     public LayerMask capaUI;
@@ -94,7 +94,8 @@ public class Jugador : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) 
             || GetDown(IButton.One, Controller.RTouch))
         {
-            Manos.SetActive(!Manos.activeInHierarchy);
+            Manos[0].SetActive(!Manos[0].activeInHierarchy);
+            Manos[1].SetActive(!Manos[1].activeInHierarchy);
 
             if (Cursor.lockState == CursorLockMode.None)
             {
@@ -198,8 +199,8 @@ public class Jugador : MonoBehaviour
         if (PlayerPrefs.GetString("Arma") != null)
         {
             GameObject selectedWeapon = Resources.Load<GameObject>("Weapons/" + weaponType);
-            GameObject weapon = Instantiate(selectedWeapon, Manos.transform.GetChild(0).position, selectedWeapon.transform.rotation);
-            weapon.transform.parent = Manos.transform.GetChild(0);
+            GameObject weapon = Instantiate(selectedWeapon, Manos[1].transform.position, selectedWeapon.transform.rotation);
+            weapon.transform.parent = Manos[1].transform;
         }
     }
 }

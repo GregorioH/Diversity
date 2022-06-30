@@ -36,6 +36,8 @@ public class Jugador : MonoBehaviour
     {
         //PlayerPrefs.SetString("Arma", null);
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         Stats = gameObject.GetComponent<PlayerStats>();
 
         if (SceneManager.GetActiveScene().name != "Menu")
@@ -72,6 +74,7 @@ public class Jugador : MonoBehaviour
         if (tocaPiso && direccion.y < 0)
             direccion.y = -2f;
         
+        /*
 
         // Movimiento
 
@@ -83,6 +86,8 @@ public class Jugador : MonoBehaviour
 
         direccion.y += gravedad * Time.deltaTime;
         CharCont.Move(direccion * Time.deltaTime);
+
+        */
 
         // Guardar o sacar el arma
 

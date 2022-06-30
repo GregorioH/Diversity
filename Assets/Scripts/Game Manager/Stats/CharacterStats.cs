@@ -6,10 +6,10 @@ public class CharacterStats : MonoBehaviour
 {
 
 	public Stat maxHealth;          // Maximum amount of health
-	public int currentHealth { get; protected set; }    // Current amount of health
+	public int currentHealth { get;  set; }    // Current amount of health
 
 	public Stat speed;
-	public int currentSpeed { get; protected set; }
+	public int currentSpeed { get;  set; }
 
 	public Stat damage;
 	public Stat range;

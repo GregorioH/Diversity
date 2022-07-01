@@ -5791,6 +5791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inv slot
       objectReference: {fileID: 0}
+    - target: {fileID: 2189216544385255889, guid: f278fa5ed5afec349bd350abf33c41f6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f278fa5ed5afec349bd350abf33c41f6, type: 3}
 --- !u!33 &7129182944903263008

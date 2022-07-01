@@ -46,7 +46,8 @@ public class Enemigo : CharacterStats
         {
             cooldownTime = 0;
 
-            jugador.gameObject.GetComponent<PlayerStats>().TakeDamage(damage.GetValue());
+            // jugador.gameObject.GetComponent<PlayerStats>().TakeDamage(damage.GetValue());
+            Attack();
         }
 
     }
@@ -60,10 +61,8 @@ public class Enemigo : CharacterStats
         ui.enemigosMuertos += 1;
     }
 
-    IEnumerator Attack()
+    public virtual void Attack()
     {
         jugador.gameObject.GetComponent<PlayerStats>().TakeDamage(damage.GetValue());
-
-        yield return new WaitForSecondsRealtime(0);
     }
 }

@@ -292,7 +292,7 @@ MonoBehaviour:
   - {fileID: 1650747870}
   - {fileID: 768746116}
   enemigo: {fileID: 3195456600341594793, guid: 4bbed065d506e6e4880f8e62f03e9782, type: 3}
-  enemigo2: {fileID: 8435744587108678238, guid: 4b7bea10f9ab3a3409d3966def4eab06, type: 3}
+  enemigo2: {fileID: 6944110468277319861, guid: 89a0798fdbaaf1a419f3db8ccc6c2579, type: 3}
   tiempoSpawn: 5
   Intervalo: 3
 --- !u!114 &221104493

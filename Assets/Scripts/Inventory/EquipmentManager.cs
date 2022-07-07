@@ -13,7 +13,7 @@ public class EquipmentManager : MonoBehaviour
 	public Equipment[] defaultEquipment;
 
 	public static EquipmentManager instance;
-	public SkinnedMeshRenderer targetMesh;
+	// public SkinnedMeshRenderer targetMesh;
 
 	SkinnedMeshRenderer[] currentMeshes;
 
@@ -61,7 +61,7 @@ public class EquipmentManager : MonoBehaviour
 
 		// Insert the item into the slot
 		currentEquipment[slotIndex] = newItem;
-		AttachToMesh(newItem, slotIndex);
+		// AttachToMesh(newItem, slotIndex);
 	}
 
 	// Unequip an item with a particular index
@@ -74,13 +74,14 @@ public class EquipmentManager : MonoBehaviour
 			// Add the item to the inventory
 			oldItem = currentEquipment[slotIndex];
 			inventory.Add(oldItem);
-
+			/*
 			SetBlendShapeWeight(oldItem, 0);
 			// Destroy the mesh
 			if (currentMeshes[slotIndex] != null)
 			{
 				Destroy(currentMeshes[slotIndex].gameObject);
 			}
+			*/
 
 			// Remove the item from the equipment array
 			currentEquipment[slotIndex] = null;
@@ -105,6 +106,7 @@ public class EquipmentManager : MonoBehaviour
 		EquipDefaults();
 	}
 
+	/*
 	void AttachToMesh(Equipment item, int slotIndex)
 	{
 
@@ -121,6 +123,9 @@ public class EquipmentManager : MonoBehaviour
 
 	}
 
+	*/
+
+	/*
 	void SetBlendShapeWeight(Equipment item, int weight)
 	{
 		foreach (MeshBlendShape blendshape in item.coveredMeshRegions)
@@ -129,6 +134,7 @@ public class EquipmentManager : MonoBehaviour
 			targetMesh.SetBlendShapeWeight(shapeIndex, weight);
 		}
 	}
+	*/
 
 	void EquipDefaults()
 	{

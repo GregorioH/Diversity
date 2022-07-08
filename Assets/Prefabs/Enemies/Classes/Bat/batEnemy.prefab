@@ -214,14 +214,14 @@ MonoBehaviour:
   maxHealth:
     baseValue: 1
   speed:
-    baseValue: 6
-  damage:
-    baseValue: 2
-  range:
     baseValue: 4
+  damage:
+    baseValue: 1
+  range:
+    baseValue: 10
   armor:
     baseValue: 0
   attackSpeed:
-    baseValue: 0
+    baseValue: 2
   agente: {fileID: 2974111276695578269}
   jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}

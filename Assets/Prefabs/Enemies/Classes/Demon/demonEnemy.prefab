@@ -212,16 +212,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 1
+    baseValue: 2
   speed:
-    baseValue: 5
+    baseValue: 3
   damage:
     baseValue: 3
   range:
-    baseValue: 2
+    baseValue: 10
   armor:
     baseValue: 0
   attackSpeed:
-    baseValue: 0
+    baseValue: 2
   agente: {fileID: 2974111276695578269}
   jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}

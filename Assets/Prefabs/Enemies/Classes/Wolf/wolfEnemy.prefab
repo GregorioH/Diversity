@@ -172,13 +172,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 9
-  speed:
-    baseValue: 99
-  damage:
-    baseValue: 1
-  range:
     baseValue: 3
+  speed:
+    baseValue: 4
+  damage:
+    baseValue: 2
+  range:
+    baseValue: 5
   armor:
     baseValue: 0
   attackSpeed:

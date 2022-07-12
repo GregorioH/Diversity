@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemigo : CharacterStats
 {
+    public Stat speed;
     public Stat attackSpeed;
 
     public NavMeshAgent agente;
@@ -17,6 +18,7 @@ public class Enemigo : CharacterStats
 
     override public void Awake()
     {
+        currentSpeed = speed.GetValue();
         currentHealth = maxHealth.GetValue();
         agente.speed = speed.GetValue();
         agente.stoppingDistance = range.GetValue();

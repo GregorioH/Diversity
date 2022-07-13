@@ -97,7 +97,7 @@ public class Jugador : MonoBehaviour
             Manos[0].SetActive(!Manos[0].activeInHierarchy);
             Manos[1].SetActive(!Manos[1].activeInHierarchy);
 
-            if (Cursor.lockState == CursorLockMode.None)
+            if (Cursor.lockState == CursorLockMode.Confined)
             {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -105,7 +105,7 @@ public class Jugador : MonoBehaviour
             else if (Cursor.lockState == CursorLockMode.Locked)
             {
                 Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.Confined;
             }
 
         }

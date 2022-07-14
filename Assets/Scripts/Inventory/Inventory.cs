@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
 
 		instance = this;
 
-		DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(gameObject.transform.parent);
 	}
 
 	#endregion

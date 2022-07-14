@@ -65,6 +65,6 @@ public class Enemigo : CharacterStats
 
     public virtual void Attack()
     {
-        jugador.gameObject.GetComponent<PlayerStats>().TakeDamage(damage.GetValue());
+        GameObject.FindObjectOfType<PlayerStats>().TakeDamage(damage.GetValue());
     }
 }

@@ -38,7 +38,7 @@ public class Jugador : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        Stats = gameObject.GetComponent<PlayerStats>();
+        Stats = GameObject.FindObjectOfType<PlayerStats>();
 
         if (SceneManager.GetActiveScene().name != "Menu")
         {

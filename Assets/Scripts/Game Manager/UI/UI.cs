@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    public PlayerStats statsJ;
+    private PlayerStats statsJ;
     public GameObject totem;
 
     private float tiempo;
@@ -23,6 +23,8 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        statsJ = GameObject.FindObjectOfType<PlayerStats>();
+
         /*foreach (object enemigo in FindObjectsOfType<Enemigo>())
         {
             enemigosVivos += 1;

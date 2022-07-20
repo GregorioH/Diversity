@@ -19,17 +19,22 @@ public class spawnerEnemigos : MonoBehaviour
 
     void Update()
     {
-        if (ui.enemigosSpawneados >= ui.enemigosSpawneables)
+        if (ui.enemigosSpawneados == ui.enemigosSpawneables)
         {
             CancelInvoke("Spawn");
+        }
+
+        if (true)
+        {
+
         }
     }
 
 
     void Spawn()
     {
-        int i = Random.Range(0, 3);
-        Instantiate(enemigo, spawnPoints[i].position, transform.rotation);
-        Instantiate(enemigo2, spawnPoints[i].position, transform.rotation);
+        int i = Random.Range(0, 4);
+        Instantiate(enemigo, spawnPoints[i].position, spawnPoints[i].rotation);
+        Instantiate(enemigo2, spawnPoints[i].position, spawnPoints[i].rotation);
     }
 }

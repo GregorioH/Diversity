@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 
 
- class enemySkeleton : Enemigo
+ public class enemySkeleton : Enemigo
 {
     public override void Awake()
     {

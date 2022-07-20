@@ -9,8 +9,9 @@ public class UI : MonoBehaviour
     private PlayerStats statsJ;
     public GameObject puerta;
 
+
     private float tiempo;
-    public static int runesObtained = 0;
+    public int runesObtained = 0;
 
     [System.NonSerialized] public float enemigosSpawneados;
     [System.NonSerialized] public float enemigosMuertos;
@@ -25,7 +26,7 @@ public class UI : MonoBehaviour
     void Start()
     {
         textoEnemigos.enabled = false;
-        
+
         statsJ = GameObject.FindObjectOfType<PlayerStats>();
 
         /*foreach (object enemigo in FindObjectsOfType<Enemigo>())
@@ -46,10 +47,11 @@ public class UI : MonoBehaviour
            puerta.SetActive(false);
         }
 
-        if (enemigosSpawneables <= 0)
+        if (enemigosMuertos >= 5)
         {
             textoEnemigos.enabled = false;
         }
+
 
         // Actualizar el tiempo restante en el HUD
 
@@ -57,6 +59,7 @@ public class UI : MonoBehaviour
         Temporizador(tiempo);
 
     }
+
 
     void Temporizador(float tiempoHUD)
     {
@@ -66,4 +69,6 @@ public class UI : MonoBehaviour
 
         textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
     }
+
+
 }

@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 7606980777050204826}
   - component: {fileID: 2035271838468354458}
   - component: {fileID: 3056516337309739390}
-  - component: {fileID: 8120077627691333182}
-  - component: {fileID: 8677309532160708270}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -122,54 +120,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8120077627691333182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751278306209805857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344764db97de79140ab3f7f5a36f8a30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth:
-    baseValue: 1
-  damage:
-    baseValue: 1
-  range:
-    baseValue: 1
-  armor:
-    baseValue: 1
-  speed:
-    baseValue: 1
-  attackSpeed:
-    baseValue: 1
-  agente: {fileID: 3056516337309739390}
-  jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}
---- !u!114 &8677309532160708270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751278306209805857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09053be9abecd2c40b665eac7185eb31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 0
-  angle: 0
-  playerRef: {fileID: 7114934424771923955, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 0
-  canSeePlayer: 0
 --- !u!1 &8435744587108678238
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8034755222702881661}
+  - component: {fileID: 2376417131117463808}
   m_Layer: 0
   m_Name: skeletonEnemy
   m_TagString: Enemigo
@@ -202,3 +153,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2376417131117463808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435744587108678238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344764db97de79140ab3f7f5a36f8a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 1
+  damage:
+    baseValue: 1
+  range:
+    baseValue: 1
+  armor:
+    baseValue: 1
+  speed:
+    baseValue: 1
+  attackSpeed:
+    baseValue: 1
+  agente: {fileID: 3056516337309739390}
+  jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}

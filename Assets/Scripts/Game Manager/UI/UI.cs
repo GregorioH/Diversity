@@ -7,9 +7,10 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     private PlayerStats statsJ;
-    public GameObject totem;
+    public GameObject puerta;
 
     private float tiempo;
+    public static int runesObtained = 0;
 
     [System.NonSerialized] public float enemigosSpawneados;
     [System.NonSerialized] public float enemigosMuertos;
@@ -23,6 +24,8 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textoEnemigos.enabled = false;
+        
         statsJ = GameObject.FindObjectOfType<PlayerStats>();
 
         /*foreach (object enemigo in FindObjectsOfType<Enemigo>())
@@ -38,10 +41,14 @@ public class UI : MonoBehaviour
         textoVidaJ.text = "HP: " + statsJ.currentHealth.ToString();
         textoEnemigos.text = "Enemies left: " + (enemigosSpawneables - enemigosMuertos).ToString();
 
-        if (enemigosMuertos >= enemigosSpawneables)
+        if (runesObtained >= 3)
         {
-            // SceneManager.LoadScene("Menu");
-           totem.SetActive(true);
+           puerta.SetActive(false);
+        }
+
+        if (enemigosSpawneables <= 0)
+        {
+            textoEnemigos.enabled = false;
         }
 
         // Actualizar el tiempo restante en el HUD

@@ -136,13 +136,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth:
     baseValue: 1
-  speed:
-    baseValue: 1
   damage:
     baseValue: 1
   range:
     baseValue: 1
   armor:
+    baseValue: 1
+  speed:
     baseValue: 1
   attackSpeed:
     baseValue: 1
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 8034755222702881661}
   m_Layer: 0
   m_Name: skeletonEnemy
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

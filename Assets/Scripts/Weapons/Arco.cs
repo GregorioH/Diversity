@@ -11,7 +11,9 @@ public class Arco : MonoBehaviour
 
     public GameObject bullet;
     public Transform bulletSpawnPoint;
+    public GameObject Bow;
     public float speed = 300;
+    public float rotationWishedX = 10;
 
     void Start()
     {
@@ -35,9 +37,9 @@ public class Arco : MonoBehaviour
 
     void Shoot()
     {
-        GameObject instBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        GameObject instBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);     
         Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
-        instBulletRigidBody.AddForce(bulletSpawnPoint.forward * speed);
+        instBulletRigidBody.AddForce(bulletSpawnPoint.right * speed);
 
     }
 

@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1239813892829560341}
   m_Layer: 0
-  m_Name: Arco posta
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 5962881276004030713}
   - component: {fileID: 2151776337439853582}
   m_Layer: 0
-  m_Name: Arco
+  m_Name: Crossbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -619,9 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2814993571627900435, guid: 0cc9901fff3fd2c43ace24429fdacf5b, type: 3}
   bulletSpawnPoint: {fileID: 3410629397325261663}
-  Bow: {fileID: 5962881276004030726}
   speed: 1000
-  rotationWishedX: 10
 --- !u!1 &6960665641095411917
 GameObject:
   m_ObjectHideFlags: 0

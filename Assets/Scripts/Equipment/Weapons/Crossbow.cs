@@ -26,6 +26,6 @@ public class Crossbow : MonoBehaviour
     {
         GameObject instBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
-        instBulletRigidBody.AddForce(bulletSpawnPoint.forward * speed);
+        instBulletRigidBody.AddForce(bulletSpawnPoint.right * speed);
     }
 }

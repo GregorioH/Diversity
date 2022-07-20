@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* Contains all the stats for a character. */
 
@@ -53,7 +54,7 @@ public class CharacterStats : MonoBehaviour
 
 	public virtual void Die()
     {
-
+		SceneManager.LoadScene("Menu");
     }
 
 }

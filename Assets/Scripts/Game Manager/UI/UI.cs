@@ -7,7 +7,8 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     private PlayerStats statsJ;
-    public GameObject puerta;
+    public GameObject door;
+    public GameObject lockedDoor;
 
 
     private float tiempo;
@@ -44,12 +45,14 @@ public class UI : MonoBehaviour
 
         if (runesObtained >= 3)
         {
-           puerta.SetActive(false);
+           door.SetActive(false);
+            lockedDoor.SetActive(false);
         }
 
         if (enemigosMuertos >= 5)
         {
             textoEnemigos.enabled = false;
+            runesObtained = 3;
         }
 
 

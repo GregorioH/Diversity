@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /*
@@ -11,12 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : CharacterStats
 {
-	// Use this for initialization
-	public override void Start()
+    // Use this for initialization
+    public override void Start()
 	{
-
 		base.Start();
-		
+
 		EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 	}
     
@@ -33,14 +29,12 @@ public class PlayerStats : CharacterStats
 			armor.RemoveModifier(oldItem.armorModifier);
 			damage.RemoveModifier(oldItem.armorModifier);
 		}
-
 	}
 
     public override void Die()
     {
         // base.Die();
 
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		SceneManager.LoadScene("Menu");
     }
-
 }

@@ -34,9 +34,9 @@ public class Inventory : MonoBehaviour
 	// Current list of items in inventory
 	public List<Item> items = new List<Item>();
 
-	// Add a new item. If there is enough room we
-	// return true. Else we return false.
-	public bool Add(Item item)
+    // Add a new item. If there is enough room we
+    // return true. Else we return false.
+    public bool Add(Item item)
 	{
 		// Don't do anything if it's a default item
 		if (!item.isDefaultItem)

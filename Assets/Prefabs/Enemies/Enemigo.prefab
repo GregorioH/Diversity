@@ -95,7 +95,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3195456600341594793}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -130,14 +130,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth:
     baseValue: 3
-  speed:
-    baseValue: 2
   damage:
     baseValue: 5
   range:
     baseValue: 4
   armor:
     baseValue: 0
+  speed:
+    baseValue: 2
   attackSpeed:
     baseValue: 1
   agente: {fileID: 609899658003105740}

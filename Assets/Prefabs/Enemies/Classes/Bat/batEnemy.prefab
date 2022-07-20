@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 445509824302871650}
   - component: {fileID: 1654349764714674919}
   - component: {fileID: 8964977918011515873}
-  - component: {fileID: 4897125691296926149}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4897125691296926149
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487574185059086425}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6944110468277319861
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +94,7 @@ GameObject:
   - component: {fileID: 8236921742582128548}
   m_Layer: 0
   m_Name: batEnemy
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +129,7 @@ GameObject:
   - component: {fileID: 4619171267214321488}
   m_Layer: 0
   m_Name: navMesh
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,11 +158,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8148252829440024110}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.3790691, z: 1.0907238}
+  m_Center: {x: 0, y: 2.2521558, z: 0.045361996}
 --- !u!195 &2974111276695578269
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -213,14 +199,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth:
     baseValue: 1
-  speed:
-    baseValue: 4
   damage:
     baseValue: 1
   range:
     baseValue: 10
   armor:
     baseValue: 0
+  speed:
+    baseValue: 4
   attackSpeed:
     baseValue: 2
   agente: {fileID: 2974111276695578269}

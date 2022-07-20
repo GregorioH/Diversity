@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 using static OVRInput;
@@ -39,6 +37,8 @@ public class Jugador : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         Stats = GameObject.FindObjectOfType<PlayerStats>();
+
+        Stats.currentHealth = Stats.maxHealth.GetValue();
 
         if (SceneManager.GetActiveScene().name != "Menu")
         {

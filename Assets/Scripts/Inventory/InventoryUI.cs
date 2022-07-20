@@ -28,6 +28,13 @@ public class InventoryUI : MonoBehaviour
 		{
 			inventoryUI.SetActive(!inventoryUI.activeSelf);
 		}
+
+		if (gameObject.activeInHierarchy == true)
+        {
+			GameObject playerLHand = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(4).gameObject;
+			gameObject.transform.position = playerLHand.transform.position;
+			gameObject.transform.rotation = playerLHand.transform.rotation;
+		}
 	}
 
 	// Update the inventory UI by:

@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour
 
 	public Image icon;          // Reference to the Icon image
 	public Button removeButton; // Reference to the remove button
+	public Text itemName;
 
 	Item item;  // Current item in the slot
 
@@ -19,6 +20,7 @@ public class InventorySlot : MonoBehaviour
 		icon.sprite = item.icon;
 		icon.enabled = true;
 		removeButton.interactable = true;
+		itemName.text = item.name;
 	}
 
 	// Clear the slot

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* This object updates the inventory UI. */
 
@@ -24,7 +25,7 @@ public class InventoryUI : MonoBehaviour
 	void Update()
 	{
 		// Check to see if we should open/close the inventory
-		if (Input.GetKeyDown(KeyCode.R))
+		if (Input.GetKeyDown(KeyCode.R) && GameObject.Find("Menu") == null)
 		{
 			inventoryUI.SetActive(!inventoryUI.activeSelf);
 		}

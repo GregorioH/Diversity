@@ -1725,7 +1725,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 		
 		InitOVRManager();
 #else
-		if (!OVRPlugin.initialized || (Settings.enabled && Settings.loadedDeviceName == OPENVR_UNITY_NAME_STR)
+		if (!OVRPlugin.initialized || (Settings.enabled && Settings.loadedDeviceName == OPENVR_UNITY_NAME_STR))
 			InitOVRManager(); 
 #endif
 	}

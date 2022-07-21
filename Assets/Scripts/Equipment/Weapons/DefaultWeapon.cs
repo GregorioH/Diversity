@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class DefaultWeapon : MonoBehaviour
 {
     public string weaponName;
+    public Item otherEquipmentName;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,6 +12,9 @@ public class DefaultWeapon : MonoBehaviour
         {
             PlayerPrefs.SetString("Arma", weaponName);
             SceneManager.LoadScene("Juego");
+            Inventory.instance.Add(otherEquipmentName);
+            Inventory.instance.Add(otherEquipmentName);
+            Inventory.instance.Add(otherEquipmentName);
         }
     }
 }

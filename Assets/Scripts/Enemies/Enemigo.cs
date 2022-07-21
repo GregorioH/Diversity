@@ -10,6 +10,8 @@ public class Enemigo : CharacterStats
 
     public NavMeshAgent agente;
 
+    public Animator animator;
+
     public Transform jugador;
 
     private UI ui;
@@ -39,6 +41,9 @@ public class Enemigo : CharacterStats
         if (distancia > agente.stoppingDistance)
         {
             agente.speed = speed.GetValue();
+
+            animator.SetInteger("SUPERESTADO", 0);
+
             return;
         }
 
@@ -50,6 +55,7 @@ public class Enemigo : CharacterStats
 
             // jugador.gameObject.GetComponent<PlayerStats>().TakeDamage(damage.GetValue());
             Attack();
+            animator.SetInteger("SUPERESTADO", 1);
         }
 
     }

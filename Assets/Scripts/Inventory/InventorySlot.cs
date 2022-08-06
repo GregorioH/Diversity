@@ -31,6 +31,7 @@ public class InventorySlot : MonoBehaviour
 		icon.sprite = null;
 		icon.enabled = false;
 		removeButton.interactable = false;
+		itemName.text = null;
 	}
 
 	// Called when the remove button is pressed

@@ -1,5 +1,8 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+using static OVRInput;
+using Button = UnityEngine.UI.Button;
+using IButton = OVRInput.Button;
 
 /* This object updates the inventory UI. */
 
@@ -25,7 +28,7 @@ public class InventoryUI : MonoBehaviour
 	void Update()
 	{
 		// Check to see if we should open/close the inventory
-		if (Input.GetKeyDown(KeyCode.R) && GameObject.Find("Menu") == null)
+		if ((Input.GetKeyDown(KeyCode.R) || GetDown(IButton.One, Controller.RTouch)) && GameObject.Find("Menu") == null)
 		{
 			inventoryUI.SetActive(!inventoryUI.activeSelf);
 		}

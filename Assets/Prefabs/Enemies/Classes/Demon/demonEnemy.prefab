@@ -142,7 +142,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857869580440049741}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.28352505, y: 0.2888818, z: 0.18565904}
@@ -164,7 +164,7 @@ MonoBehaviour:
   damage:
     baseValue: 3
   range:
-    baseValue: 10
+    baseValue: 6
   armor:
     baseValue: 0
   speed:
@@ -1535,7 +1535,7 @@ MonoBehaviour:
   attackSpeed:
     baseValue: 2
   agente: {fileID: 2974111276695578269}
-  animator: {fileID: 0}
+  animator: {fileID: 1795485101296397772}
   jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}
 --- !u!65 &2467848313851175815
 BoxCollider:

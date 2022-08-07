@@ -50,15 +50,16 @@ public class UI : MonoBehaviour
         }
 
         textoEnemigos.text = "Enemies left: " + (enemigosSpawneables - enemigosMuertos).ToString();
+        runesObtainedText.text = "• Find the runes: " + runesObtained.ToString() + "/3";
 
         if (runesObtained >= 3)
         {
            door.SetActive(false);
         }
 
-        if (enemigosMuertos >= 6 & areaClear == false)
+        if (enemigosMuertos >= enemigosSpawneables && areaClear == false)
         {
-            areaClearSignal();
+            areaClear = true;
             textoEnemigos.enabled = false;
             runesObtained += 1;
         }
@@ -68,8 +69,6 @@ public class UI : MonoBehaviour
 
         tiempo += Time.deltaTime;
         Temporizador(tiempo);
-        objectiveMission();
-
     }
 
 
@@ -79,18 +78,7 @@ public class UI : MonoBehaviour
         float minutos = Mathf.FloorToInt(tiempoHUD / 60);
         float segundos = Mathf.FloorToInt(tiempoHUD % 60);
 
-        textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+        textoTiempo.text = "Time: " + string.Format("{0:00}:{1:00}", minutos, segundos);
     }
-
-    void objectiveMission()
-    {
-        runesObtainedText.text = "Find the runes and escape: " + runesObtained.ToString() + "/3";
-
-    }
-    void areaClearSignal()
-    {
-        areaClear = true;
-    }
-
 
 }

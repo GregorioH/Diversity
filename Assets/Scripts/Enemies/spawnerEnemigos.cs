@@ -6,8 +6,7 @@ public class spawnerEnemigos : MonoBehaviour
 {
     public UI ui;
     public Transform[] spawnPoints;
-    public GameObject enemigo;
-    public GameObject enemigo2;
+    public GameObject[] enemySelection;
     public int tiempoSpawn;
     public int Intervalo; 
 
@@ -34,7 +33,7 @@ public class spawnerEnemigos : MonoBehaviour
     void Spawn()
     {
         int i = Random.Range(0, 4);
-        Instantiate(enemigo, spawnPoints[i].position, spawnPoints[i].rotation);
-        Instantiate(enemigo2, spawnPoints[i].position, spawnPoints[i].rotation);
+        Instantiate(enemySelection[i], spawnPoints[i].position, spawnPoints[i].rotation);
+        
     }
 }

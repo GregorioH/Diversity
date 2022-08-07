@@ -10,6 +10,7 @@ public class triggerArena3 : MonoBehaviour
 
     public GameObject doorTest;
     public GameObject arena3Start;
+    public GameObject arena3Manager;
 
     public spawnerEnemigos spawnerEnemigos;
     
@@ -19,6 +20,7 @@ public class triggerArena3 : MonoBehaviour
         if (other.tag == "Player")
         {
             enemiesRemaining.GetComponent<Text>().enabled = true;
+            arena3Manager.SetActive(true);
             doorTest.SetActive(true);
             arena3Start.SetActive(true);
             spawnerEnemigos.enabled = true;

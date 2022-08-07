@@ -107,9 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 48435110953763575}
-  - component: {fileID: 565780915527473242}
-  - component: {fileID: 8254599190346919379}
-  - component: {fileID: 1795485101296397772}
+  - component: {fileID: 8000717144766998536}
   m_Layer: 0
   m_Name: Demon R
   m_TagString: Untagged
@@ -134,47 +132,7 @@ Transform:
   m_Father: {fileID: 2158278441999578068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &565780915527473242
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857869580440049741}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.28352505, y: 0.2888818, z: 0.18565904}
-  m_Center: {x: -0.014863171, y: 0.1258918, z: -0.00066364696}
---- !u!114 &8254599190346919379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857869580440049741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dd3630715ae8346853b27413573ce7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth:
-    baseValue: 2
-  damage:
-    baseValue: 3
-  range:
-    baseValue: 6
-  armor:
-    baseValue: 0
-  speed:
-    baseValue: 3
-  attackSpeed:
-    baseValue: 2
-  agente: {fileID: 2974111276695578269}
-  animator: {fileID: 1795485101296397772}
-  jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}
---- !u!95 &1795485101296397772
+--- !u!95 &8000717144766998536
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1485,8 +1443,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8236921742582128548}
-  - component: {fileID: 4035194700144421678}
-  - component: {fileID: 2467848313851175815}
   m_Layer: 0
   m_Name: demonEnemy
   m_TagString: Enemigo
@@ -1510,46 +1466,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4035194700144421678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6944110468277319861}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dd3630715ae8346853b27413573ce7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth:
-    baseValue: 2
-  damage:
-    baseValue: 3
-  range:
-    baseValue: 10
-  armor:
-    baseValue: 0
-  speed:
-    baseValue: 3
-  attackSpeed:
-    baseValue: 2
-  agente: {fileID: 2974111276695578269}
-  animator: {fileID: 1795485101296397772}
-  jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}
---- !u!65 &2467848313851175815
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6944110468277319861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.020489, z: 0.9999981}
-  m_Center: {x: 0, y: -1.1634966, z: 0}
 --- !u!1 &6945099948903655032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,6 +1824,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2158278441999578068}
   - component: {fileID: 2974111276695578269}
+  - component: {fileID: 7921421031980319458}
+  - component: {fileID: 901662318005184599}
   m_Layer: 0
   m_Name: navMesh
   m_TagString: Enemigo
@@ -1953,6 +1871,46 @@ NavMeshAgent:
   m_BaseOffset: 0.49
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &7921421031980319458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8148252829440024110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.020489, z: 0.9999981}
+  m_Center: {x: 0, y: 1.46, z: 0}
+--- !u!114 &901662318005184599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8148252829440024110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2dd3630715ae8346853b27413573ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 1
+  damage:
+    baseValue: 3
+  range:
+    baseValue: 2
+  armor:
+    baseValue: 0
+  speed:
+    baseValue: 3
+  attackSpeed:
+    baseValue: 2
+  agente: {fileID: 2974111276695578269}
+  animator: {fileID: 8000717144766998536}
+  jugador: {fileID: 7114934424772088787, guid: 9ec7fad7714427c4da38511995dbe76a, type: 3}
 --- !u!1 &8265392144612273551
 GameObject:
   m_ObjectHideFlags: 0

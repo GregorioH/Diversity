@@ -126,13 +126,6 @@ public class Jugador : MonoBehaviour
         */
 
 
-        // Limitar estadísticas
-
-        if (Stats.currentHealth <= 0)
-        {
-            Stats.gameObject.GetComponent<UI>().textoVidaJ.text = "HP: 0";
-        }
-
         // Raycast (Disparo)
         
         if (Input.GetMouseButtonDown(0)

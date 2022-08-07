@@ -8,24 +8,28 @@ public class UI : MonoBehaviour
 {
     private PlayerStats statsJ;
     public GameObject door;
-    public GameObject lockedDoor;
 
 
     private float tiempo;
+    public Image hpBar;
     public int runesObtained = 0;
+    public bool areaClear = false;
 
-    [System.NonSerialized] public float enemigosSpawneados;
-    [System.NonSerialized] public float enemigosMuertos;
+    public float enemigosSpawneados;
+    public float enemigosMuertos;
     public float enemigosSpawneables;
 
-    [Header("Textos del HUD")]
-    public Text textoVidaJ;
+    //[System.NonSerialized]
+
+    [Header("HUD Texts")]
     public Text textoEnemigos;
     public Text textoTiempo;
+    public Text runesObtainedText;
 
     // Start is called before the first frame update
     void Start()
     {
+        runesObtained = 0;
         textoEnemigos.enabled = false;
 
         statsJ = GameObject.FindObjectOfType<PlayerStats>();
@@ -40,19 +44,23 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textoVidaJ.text = "HP: " + statsJ.currentHealth.ToString();
+        if (statsJ.currentHealth >= 0)
+        {
+            hpBar.fillAmount = (float)statsJ.currentHealth / (float)statsJ.maxHealth.GetValue();
+        }
+
         textoEnemigos.text = "Enemies left: " + (enemigosSpawneables - enemigosMuertos).ToString();
 
         if (runesObtained >= 3)
         {
            door.SetActive(false);
-            lockedDoor.SetActive(false);
         }
 
-        if (enemigosMuertos >= 5)
+        if (enemigosMuertos >= 6 & areaClear == false)
         {
+            areaClearSignal();
             textoEnemigos.enabled = false;
-            runesObtained = 3;
+            runesObtained += 1;
         }
 
 
@@ -60,6 +68,7 @@ public class UI : MonoBehaviour
 
         tiempo += Time.deltaTime;
         Temporizador(tiempo);
+        objectiveMission();
 
     }
 
@@ -71,6 +80,16 @@ public class UI : MonoBehaviour
         float segundos = Mathf.FloorToInt(tiempoHUD % 60);
 
         textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+    }
+
+    void objectiveMission()
+    {
+        runesObtainedText.text = "Find the runes and escape: " + runesObtained.ToString() + "/3";
+
+    }
+    void areaClearSignal()
+    {
+        areaClear = true;
     }
 
 

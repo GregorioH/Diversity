@@ -12,14 +12,14 @@ public class UI : MonoBehaviour
 
 
     private float tiempo;
+    public Image hpBar;
     public int runesObtained = 0;
 
     [System.NonSerialized] public float enemigosSpawneados;
     [System.NonSerialized] public float enemigosMuertos;
     public float enemigosSpawneables;
 
-    [Header("Textos del HUD")]
-    public Text textoVidaJ;
+    [Header("HUD Texts")]
     public Text textoEnemigos;
     public Text textoTiempo;
 
@@ -40,7 +40,11 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textoVidaJ.text = "HP: " + statsJ.currentHealth.ToString();
+        if (statsJ.currentHealth >= 0)
+        {
+            hpBar.fillAmount = (float)statsJ.currentHealth / (float)statsJ.maxHealth.GetValue();
+        }
+
         textoEnemigos.text = "Enemies left: " + (enemigosSpawneables - enemigosMuertos).ToString();
 
         if (runesObtained >= 3)

@@ -9,6 +9,7 @@ public class totemWinCondition : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GameObject.FindObjectOfType<dontDestroy>().GetComponent<AudioSource>().Stop();
             SceneManager.LoadScene("Menu");
         }
     }

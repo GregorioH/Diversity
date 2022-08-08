@@ -8,6 +8,7 @@ public class Enemigo : CharacterStats
     public Stat speed;
     public Stat attackSpeed;
 
+
     public NavMeshAgent agente;
 
     public Animator animator;
@@ -71,6 +72,11 @@ public class Enemigo : CharacterStats
 
     public virtual void Attack()
     {
-        GameObject.FindObjectOfType<PlayerStats>().TakeDamage(damage.GetValue());
+        if (GameObject.FindObjectOfType<PlayerStats>().currentHealth > 0)
+        {
+            GameObject.FindObjectOfType<PlayerStats>().TakeDamage(damage.GetValue());
+            GameObject.FindObjectOfType<Jugador>().playerDamageSound();
+        }
+        
     }
 }

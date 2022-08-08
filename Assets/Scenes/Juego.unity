@@ -12287,6 +12287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharCont: {fileID: 803612472}
   Camara: {fileID: 803612465}
+  audiosource: {fileID: 0}
+  dontDestroyy: {fileID: 0}
   gravedad: -9.81
   direccion: {x: 0, y: 0, z: 0}
   checkPiso: {fileID: 397649219}
@@ -12353,6 +12355,10 @@ MonoBehaviour:
     baseValue: 10
   armor:
     baseValue: 0
+  jugador: {fileID: 0}
+  death: {fileID: 0}
+  dontDestroyy: {fileID: 0}
+  once: 1
 --- !u!114 &803612471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30684,6 +30690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35bcc4d9c7778f418e057eb80140c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyy: {fileID: 1084093773175661546, guid: 98f5ff924c52f4c478b387973fed5bc1, type: 3}
 --- !u!65 &2051961388
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,5 +1,8 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Audio;
+using System.Collections.Generic;
+using System.Collections;
 /*
 	This component is derived from CharacterStats. It adds two things:
 		- Gaining modifiers when equipping items
@@ -8,11 +11,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : CharacterStats
 {
-    // Use this for initialization
+	public AudioSource jugador;
+	public AudioClip death;
+	public bool once = true;
+	// Use this for initialization
     public override void Start()
 	{
 		base.Start();
 
+		once = true;
 		EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 	}
     
@@ -31,10 +38,39 @@ public class PlayerStats : CharacterStats
 		}
 	}
 
-    public override void Die()
+	// Reproduce Death sound
+	IEnumerator waitbeforeDie ()
     {
-        // base.Die();
-
+		playerDeathSound();
+		yield return new WaitForSeconds(0.8f);
+		playerDeathSoundStop();
+		yield return new WaitForSeconds(2f);
+		GameObject.FindObjectOfType<dontDestroy>().GetComponent<AudioSource>().Stop();
 		SceneManager.LoadScene("Menu");
+	}
+
+
+	public override void Die()
+    {
+        if (once == true)
+        {
+			once = false;
+			StartCoroutine(waitbeforeDie());
+			
+        }
+
     }
+	
+	public void playerDeathSound()
+	{
+		jugador.GetComponent<AudioSource>().PlayOneShot(death);
+	}
+
+	public void playerDeathSoundStop()
+    {
+		jugador.GetComponent<AudioSource>().Stop();
+    }
+
+
+
 }

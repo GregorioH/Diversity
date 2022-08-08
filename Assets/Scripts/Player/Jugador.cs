@@ -9,6 +9,7 @@ public class Jugador : MonoBehaviour
 {
     public CharacterController CharCont;
     public Camera Camara;
+    public AudioSource audiosource;
     // public Animator animator;
 
     private PlayerStats Stats;
@@ -40,6 +41,9 @@ public class Jugador : MonoBehaviour
 
         Stats.currentHealth = Stats.maxHealth.GetValue();
 
+        Stats.once = true;
+
+        GameObject.FindObjectOfType<dontDestroy>().GetComponent<AudioSource>().Play();
         if (SceneManager.GetActiveScene().name != "Menu")
         {
             if (PlayerPrefs.GetString("Arma") != "")
@@ -196,4 +200,10 @@ public class Jugador : MonoBehaviour
             weapon.transform.parent = Manos[1].transform;
         }
     }
+
+    public void playerDamageSound()
+    {
+        audiosource.Play();
+    }
+
 }

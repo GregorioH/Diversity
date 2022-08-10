@@ -8,6 +8,7 @@ TagManager:
   - Game Manager
   - Interact
   - Default Weapon
+  - Enemy Weapon
   layers:
   - Default
   - TransparentFX

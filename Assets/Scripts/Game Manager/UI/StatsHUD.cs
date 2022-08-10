@@ -6,18 +6,11 @@ using IButton = OVRInput.Button;
 
 public class StatsHUD : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.R) || GetDown(IButton.One, Controller.RTouch)) && GameObject.Find("Menu") == null)
+        if (Input.GetKeyDown(KeyCode.R) || GetDown(IButton.One, Controller.RTouch))
         {
-            gameObject.SetActive(gameObject.activeSelf);
+            gameObject.transform.GetChild(0).gameObject.SetActive(!gameObject.transform.GetChild(0).gameObject.activeSelf);
         }
 
         if (gameObject.activeInHierarchy == true)

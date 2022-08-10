@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -37,7 +35,7 @@ public class Enemigo : CharacterStats
 
         cooldownTime += Time.deltaTime;
 
-        float distancia = Vector3.Distance(jugador.position, this.gameObject.transform.position);
+        float distancia = Vector3.Distance(new Vector3(jugador.position.x, 0, jugador.position.z), new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z));
 
         if (distancia > agente.stoppingDistance)
         {
@@ -72,11 +70,12 @@ public class Enemigo : CharacterStats
 
     public virtual void Attack()
     {
+        /*
         if (GameObject.FindObjectOfType<PlayerStats>().currentHealth > 0)
         {
             GameObject.FindObjectOfType<PlayerStats>().TakeDamage(damage.GetValue());
             GameObject.FindObjectOfType<Jugador>().playerDamageSound();
         }
-        
+        */
     }
 }

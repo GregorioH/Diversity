@@ -46,6 +46,7 @@ public class PlayerStats : CharacterStats
 		playerDeathSoundStop();
 		yield return new WaitForSeconds(2f);
 		GameObject.FindObjectOfType<dontDestroy>().GetComponent<AudioSource>().Stop();
+		Destroy(GameObject.FindObjectOfType<Inventory>().transform.parent.gameObject);
 		SceneManager.LoadScene("Menu");
 	}
 
